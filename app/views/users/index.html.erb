@@ -1,0 +1,22 @@
+<h1>Users</h1>
+
+
+    <table class="table">
+	<thead>
+		<tr>
+			<th>image</th>
+			<th>name</th>
+
+		</tr>
+	</thead>
+	<% @users.each do |user| %>
+	<tbody>
+		<tr>
+			
+      <td style="border:none;"><%= user.name %></td>
+		</tr>
+
+    <% end %>
+  </tbody>
+</table>
+
