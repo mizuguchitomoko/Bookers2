@@ -6,15 +6,18 @@
 		<tr>
 			<th>image</th>
 			<th>name</th>
+			<th></th>
 
 		</tr>
 	</thead>
 	<% @users.each do |user| %>
 	<tbody>
-		<tr>
 
+		<tr>
+      <td>  <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg' %></td>
       <td style="border:none;"><%= user.name %></td>
-		</tr>
+		  <td>show</td>
+		 </tr>
 
     <% end %>
   </tbody>

@@ -14,19 +14,19 @@
     <% if user_signed_in? %>
    <div class="icon">
    <div align="right">
-   <span class="glyphicon glyphicon-home" aria-hidden="true">Home</span>
-    <span class="glyphicon glyphicon-user" aria-hidden="true">Users</span>
-    <span class="glyphicon glyphicon-book" aria-hidden="true">Books</span>
-   <span class="glyphicon glyphicon-log-out" aria-hidden="true">logout</span>
+   <span class="glyphicon glyphicon-home" aria-hidden="true">Home</span><!-- users show に飛ぶ　-->
+    <span class="glyphicon glyphicon-user" aria-hidden="true"><%= link_to 'Users',  users_path, method: :get %></span>
+    <span class="glyphicon glyphicon-book" aria-hidden="true"><%= link_to 'Books',  books_path, method: :get %></span>
+   <span class="glyphicon glyphicon-log-out" aria-hidden="true"><%= link_to 'logout',  destroy_user_session_path, method: :delete %></span>
    </div></div>
    <!-- logoutの時のヘッダー -->
    <% else %>
    <div class="icon">
    <div align="right">
    <span class="glyphicon glyphicon-home" aria-hidden="true">Home</span>
-   <span class="glyphicon glyphicon-link" aria-hidden="true">About</span>
-   <span class="glyphicon glyphicon-edit" aria-hidden="true">sign up</span>
-   <span class="glyphicon glyphicon-log-in" aria-hidden="true">login</span>
+   <span class="glyphicon glyphicon-link" aria-hidden="true">About</span><!-- aboutページつくる -->
+   <span class="glyphicon glyphicon-edit" aria-hidden="true"><%= link_to 'sign up',  new_user_session_path, method: :get %></span>
+   <span class="glyphicon glyphicon-log-in" aria-hidden="true"><%= link_to 'login', user_session_path, method: :post %></span>
   </div> </div>
   </header>
   <% end %>
