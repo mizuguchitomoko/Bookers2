@@ -1,10 +1,12 @@
 class UsersController < ApplicationController
   def index
     @users = User.all
+
   end
 
   def show
     @user = User.find(params[:id])
+    @books = @user.books.all
    #imageを渡す記述
   end
 
@@ -18,7 +20,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.update(user_params)
-    redirect_to '/users'
+    redirect_to user_path(@user)
     #redirect_to user_path(@user.id)
   end
 
