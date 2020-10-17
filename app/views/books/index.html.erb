@@ -1,4 +1,25 @@
 
+<div class="container">  <!-- この行を追加 -->
+  <div class="row">
+
+
+    <div class="col-lg-3">
+
+
+    	<h1>New book</h1>
+<%= form_with model: @book,  local:true do |f| %>
+<!-- form_with model: @book, url:'/books', local:true do |f|  -->
+  <h4>Title</h4>
+  <%= f.text_field :title %>
+  <h4>Body</h4>
+  <%= f.text_area :body %>
+  <%= f.submit 'Create Book' %>
+<% end %>
+</div>
+
+
+<div class="col-lg-9">
+<table class="table table-striped">
 <h1>Books</h1>
 
 
@@ -14,12 +35,16 @@
 	<% @books.each do |book| %>
 	<tbody>
 		<tr>
-			<td style="border:none;">profile_image</td>
-			<td style="border:none;"><%= book.title %></td>
+			<td style="border:none;"><%= attachment_image_tag current_user, :profile_image, :fill, 60, 60, class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg"%></td>
+			<td style="border:none;"><%= link_to book.title, book_path(book) %></td>
       <td style="border:none;"><%= book.body %></td>
 		</tr>
 
     <% end %>
   </tbody>
 </table>
-
+ </table>
+</div>
+ </table>
+  </div>
+  </div>
