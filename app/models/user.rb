@@ -8,5 +8,5 @@ class User < ApplicationRecord
          attachment :profile_image
 
          validates :name, presence: true
-         validates :introduction, presence: true
+
 end

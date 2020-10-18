@@ -21,6 +21,10 @@
    <%= link_to "",edit_user_path(current_user.id), class:"col-xs-12 btn btn-default glyphicon glyphicon-wrench edit" %>
 
     	<h1>New book</h1>
+<%= render 'layouts/error.message'  %>
+<% @book.errors.full_messages.each do |message| %>
+ <% end %>
+
 <%= form_with model: @book,  local:true do |f| %>
 <!-- form_with model: @book, url:'/books', local:true do |f|  -->
   <h4>Title</h4>
