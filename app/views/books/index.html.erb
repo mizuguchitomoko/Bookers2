@@ -5,8 +5,24 @@
 
     <div class="col-lg-3">
 
+<h1>User info</h1>
+<%= attachment_image_tag current_user, :profile_image, :fill, 60, 60, class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg"%><br>
+ <table class="table">
+	<thead>
+	 <tr>
+	 <th>name</th><th><%= current_user.name %></th></tr>
+	 <tr>
+	 <th>introduction</th><th><%= current_user.introduction %></th></tr>
+
+ </table>
+   </thead>
+
+   <%= link_to "",edit_user_path(current_user.id), class:"col-xs-12 btn btn-default glyphicon glyphicon-wrench edit" %>
+
+
 
     	<h1>New book</h1>
+
 <%= form_with model: @book,  local:true do |f| %>
 <!-- form_with model: @book, url:'/books', local:true do |f|  -->
   <h4>Title</h4>
@@ -35,7 +51,7 @@
 	<% @books.each do |book| %>
 	<tbody>
 		<tr>
-			<td style="border:none;"><%= attachment_image_tag current_user, :profile_image, :fill, 60, 60, class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg"%></td>
+			<td style="border:none;"><%= attachment_image_tag @user, :profile_image, :fill, 60, 60, class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg"%></td>
 			<td style="border:none;"><%= link_to book.title, book_path(book) %></td>
       <td style="border:none;"><%= book.body %></td>
 		</tr>
