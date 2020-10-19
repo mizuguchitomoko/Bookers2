@@ -1,3 +1,8 @@
+<% if flash[:notice] %>
+  <p><%= flash[:notice] %></p>
+<% end %>
+
+
 <div class="container">  <!-- この行を追加 -->
   <div class="row">
 
@@ -15,6 +20,7 @@
 
  </table>
    </thead>
+    <%= link_to "",edit_user_path(current_user.id), class:"col-xs-12 btn btn-default glyphicon glyphicon-wrench edit" %>
 
 
 

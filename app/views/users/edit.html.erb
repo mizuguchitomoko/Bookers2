@@ -1,5 +1,10 @@
 <h1>Users info</h1>
 <%= form_with model:@user, local: true do |f| %>
+
+<%= render 'layouts/user.error.message'  %>
+<% @user.errors.full_messages.each do |message| %>
+ <% end %>
+
   <h4>Name</h4>
   <%= f.text_field :name %>
 
@@ -11,7 +16,7 @@
     <label class="control-label sr-only" for="inputEmail">ProfileImage</label>
     <%= f.attachment_field :profile_image %>
   </div>
-  
+
   <h4>Introduction</h4>
   <%= f.text_area :introduction %>
   <%= f.submit 'Update User' %>
