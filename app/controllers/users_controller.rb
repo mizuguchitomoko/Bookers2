@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @book = Book.new
+    @book_new = Book.new
     @user = User.find(params[:id])
     @books = @user.books.all
    #imageを渡す記述

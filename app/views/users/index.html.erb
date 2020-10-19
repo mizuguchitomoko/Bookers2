@@ -1,22 +1,15 @@
-
-
-<div class="container">  <!-- この行を追加 -->
+<div class="container">
   <div class="row">
-
-
     <div class="col-lg-3">
-
-
 <h1>User info</h1>
 <%= attachment_image_tag current_user, :profile_image, :fill, 60, 60, class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg"%><br>
- <table class="table">
+  <table class="table">
 	<thead>
-	 <tr>
-	 <th>name</th><th><%= current_user.name %></th></tr>
-	 <tr>
-	 <th>introduction</th><th><%= current_user.introduction %></th></tr>
-
- </table>
+	<tr>
+	<th>name</th><th><%= current_user.name %></th></tr>
+	<tr>
+	<th>introduction</th><th><%= current_user.introduction %></th></tr>
+  </table>
    </thead>
 
    <%= link_to "",edit_user_path(current_user.id), class:"col-xs-12 btn btn-default glyphicon glyphicon-wrench edit" %>

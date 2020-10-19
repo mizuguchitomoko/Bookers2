@@ -1,60 +1,44 @@
- <div class="container">  <!-- この行を追加 -->
-  <div class="row">
-
-
-    <div class="col-lg-3">
-
-
+<div class="container">  <!-- この行を追加 -->
+ <div class="row">
+  <div class="col-lg-3">
 <h1>User info</h1>
-<%= attachment_image_tag current_user, :profile_image, :fill, 60, 60, class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg"%><br>
+<%= attachment_image_tag @user, :profile_image, :fill, 60, 60, class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg"%><br>
  <table class="table">
-	<thead>
-	 <tr>
-	 <th>name</th><th><%= current_user.name %></th></tr>
-	 <tr>
-	 <th>introduction</th><th><%= current_user.introduction %></th></tr>
-
-
-
- </table>
-   </thead>
-
-   <%= link_to "",edit_user_path(current_user.id), class:"col-xs-12 btn btn-default glyphicon glyphicon-wrench edit" %>
-
-    	<h1>New book</h1>
-
-<%= form_with model: @book,  local:true do |f| %>
-<!-- form_with model: @book, url:'/books', local:true do |f|  -->
-  <h4>Title</h4>
-  <%= f.text_field :title %>
-  <h4>Body</h4>
-  <%= f.text_area :body %>
-  <%= f.submit 'Create Book' %>
-  <% end %>
-</div>
-
-
-<div class="col-lg-9">
-<table class="table table-striped">
-
-
- <h2>Books</h2>
-  <table class='table'>
   <thead>
-  <tr>
-   <th></th>
-  <th>Title</th>
-   <th>Opinion</th>
-
-    </tr>
+	  <tr>
+	  <th>name</th><th><%= @user.name %></th></tr>
+	  <tr>
+	  <th>introduction</th><th><%= @user.introduction %></th></tr>
+  </thead>
+ </table>
+ <%= link_to "",edit_user_path(current_user.id), class:"col-xs-12 btn btn-default glyphicon glyphicon-wrench edit" %>
+   <h1>New book</h1>
+   <%= form_with model: @book_new,  local:true do |f| %>
+   <h4>Title</h4>
+   <%= f.text_field :title %>
+   <h4>Body</h4>
+   <%= f.text_area :body %>
+   <%= f.submit 'Create Book' %>
+ <% end %>
+  </div>
+  <div class="col-lg-9">
+    <table class="table table-striped">
+    <h2>Books</h2>
+    <table class='table'>
+      <thead>
+       <tr>
+         <th></th>
+         <th>Title</th>
+         <th>Opinion</th>
+       </tr>
       </thead>
       <tbody>
       <% @books.each do |book| %>
-      <tr>
-     <td><span><%= attachment_image_tag @user, :profile_image, :fill, 60, 60, class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %></span></td>
-      <td><span><%= link_to book.title,book_path(book)%></span></td>
-      <td><span><%= book.body %></span></td>
-      </tr>
+        <tr>
+          <td><span><%= attachment_image_tag @user, :profile_image, :fill, 60, 60, class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %></span></td>
+          <td><span><%= link_to book.title,book_path(book)%></span></td>
+          <td><span><%= book.body %></span></td>
+        </tr>
       <% end %>
-          </tbody>
-      </table>
+      </tbody>
+    </table>
