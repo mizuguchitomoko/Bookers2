@@ -1,24 +1,33 @@
-<h1>Users info</h1>
-<%= form_with model:@user, local: true do |f| %>
+<h1>User info</h1>
+<%= form_for @user do |f| %>
+<% if @user.errors.any? %>
+<%= @user.errors.count %>errors
+    <ul>
+    <% @user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  <% end %>
 
-<%= render 'layouts/user.error.message'  %>
-<% @user.errors.full_messages.each do |message| %>
- <% end %>
-
-  <h4>Name</h4>
-  <%= f.text_field :name %>
-
-<div class="form-group has-icon">
-    <div class="user-edit-image">
-
-    </div>
-    <h4>Image</h4>
-    <label class="control-label sr-only" for="inputEmail">ProfileImage</label>
-    <%= f.attachment_field :profile_image %>
+  <div class="form-group">
+      <%= f.label :name %><br>
+      <%= f.text_field :name %>
   </div>
 
-  <h4>Introduction</h4>
-  <%= f.text_area :introduction %>
-  <%= f.submit 'Update User' %>
+   <div class="form-group">
+      <%= f.label :image %><br />
+      <%= f.attachment_field :profile_image,class: "user_image" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :introduction %><br />
+      <%= f.text_area :introduction, autofocus: true ,class: "form-control introduction"%>
+    </div>
+
+
+    <div class="actions">
+    <%= f.submit "Update User", class: "btn btn-primary" %>
+    </div>
+
 <% end %>
 
