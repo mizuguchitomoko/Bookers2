@@ -40,7 +40,7 @@
             <td style="border:none;"><%= @book.body %></td>
             <% if @user.id == current_user.id %>
               <td><span><%= link_to 'Edit', edit_book_path(@book),class: "btn btn-success"  %></span></td>
-		          <td><span><%= link_to 'Destroy', book_path(@book), class: "btn btn-danger" ,method: :delete %></span></td>
+		          <td><span><%= link_to 'Destroy', book_path(@book), class: "btn btn-danger" ,method: :delete, "data-confirm" => "本当に削除しますか？"  %></span></td>
             <% end %>
           </tr>
         </tbody>
