@@ -1,3 +1,6 @@
+<% if flash[:notice] %>
+  <p><%= flash[:notice] %></p>
+<% end %>
 <%= render 'layouts/error.message'  %>
   <% @book.errors.full_messages.each do |message| %>
 <% end %>

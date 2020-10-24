@@ -51,6 +51,7 @@ before_action :authenticate_user!, only: [:new, :create, :index, :show, :edit, :
   def destroy
     @book = Book.find(params[:id])
     @book.destroy
+    flash[:notice] = "Deleted successfully"
     redirect_to '/books'
   end
 
