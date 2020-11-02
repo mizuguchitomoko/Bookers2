@@ -38,6 +38,19 @@
             <br><br><br><%= link_to @user.name, user_path(@book.user.id) %></td>
             <td style="border:none;"><%= link_to @book.title,book_path(@book)%></td>
             <td style="border:none;"><%= @book.body %></td>
+            <td>
+              <% if current_user.already_favorited?(@book) %>
+                <%= link_to book_favorites_path(@book), method: :delete do %>
+                  <i class="fas fa-heart"></i>
+                <% end %>
+                  <%= @book.favorites.count %>
+                <% else %>
+                  <%= link_to book_favorites_path(@book), method: :post do %>
+                    <i class="far fa-heart"></i>
+                  <% end %>
+                  <%= @book.favorites.count %>
+                <% end %>
+              </td>
             <% if @user.id == current_user.id %>
               <td><span><%= link_to 'Edit', edit_book_path(@book),class: "btn btn-success"  %></span></td>
 		          <td><span><%= link_to 'Destroy', book_path(@book), class: "btn btn-danger" ,method: :delete, "data-confirm" => "本当に削除しますか？"  %></span></td>
