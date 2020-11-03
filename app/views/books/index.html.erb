@@ -63,7 +63,12 @@
           <%= book.favorites.count %>
         <% end %>
         </td>
-		</tr>
+        <td>
+          <ul class="inline-meta">
+              <%= link_to "コメント数： #{book.book_comments.count} ", book_path(book.id) %>
+          </ul>
+        </td>
+		  </tr>
     <% end %>
        </tbody>
        </table>

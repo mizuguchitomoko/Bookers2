@@ -41,6 +41,24 @@
           <td><span><%= attachment_image_tag @user, :profile_image, :fill, 60, 60, class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %></span></td>
           <td><span><%= link_to book.title,book_path(book)%></span></td>
           <td><span><%= book.body %></span></td>
+          <td>
+            <% if current_user.already_favorited?(book) %>
+            <%= link_to book_favorites_path(book), method: :delete do %>
+            <i class="fas fa-heart"></i>
+            <% end %>
+            <%= book.favorites.count %>
+            <% else %>
+            <%= link_to book_favorites_path(book), method: :post do %>
+            <i class="far fa-heart"></i>
+            <% end %>
+            <%= book.favorites.count %>
+            <% end %>
+          </td>
+          <td>
+          <ul class="inline-meta">
+              <%= link_to "コメント数： #{book.book_comments.count} ", book_path(book.id) %>
+          </ul>
+        </td>
         </tr>
       <% end %>
       </tbody>
