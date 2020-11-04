@@ -9,6 +9,7 @@ class UsersController < ApplicationController
 
   def show
     @book_new = Book.new
+    @users = User.all
     @user = User.find(params[:id])
     @books = @user.books.all
    #imageを渡す記述
@@ -33,6 +34,16 @@ class UsersController < ApplicationController
      flash[:danger] = @user.errors.full_messages
      render "edit"
    end
+  end
+  
+  def follows
+    @user = User.find(params[:id])
+    @users = @user.followings
+  end
+
+  def followers
+    @user = User.find(params[:id])
+    @users = @user.followers
   end
 
   private

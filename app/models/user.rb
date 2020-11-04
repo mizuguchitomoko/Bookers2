@@ -10,6 +10,16 @@ class User < ApplicationRecord
   has_many :book_comments, dependent: :destroy
   attachment :profile_image
   
+  has_many :active_relationships, foreign_key: "followed_id", class_name: "Relationship", dependent: :destroy
+  has_many :followings, through: :active_relationships, source: :follower # 自分がフォローしている人
+  has_many :passive_relationships, foreign_key: "follower_id", class_name: "Relationship", dependent: :destroy
+  has_many :followers, through: :passive_relationships, source: :followed # 自分をフォローしている人
+  
+  def followed_by?(user)
+    # 今自分(引数のuser)がフォローしようとしているユーザー(レシーバー)がフォローされているユーザー(つまりpassive)の中から、引数に渡されたユーザー(自分)がいるかどうかを調べる
+    passive_relationships.find_by(followed_id: user.id).present?
+  end
+  
   validates :name, presence: :true,
                    length: { in: 2..20 }
   validates :introduction, length: { maximum: 50 }

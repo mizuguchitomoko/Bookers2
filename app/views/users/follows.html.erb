@@ -1,0 +1,28 @@
+<div class="container">
+  <h2>Follow Users</h2>
+  <% @users.each do |user| %>
+  <table class="table">
+	<thead>
+		<tr>
+			<th>image</th>
+			<th>name</th>
+			<th></th>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th><%= attachment_image_tag user, :profile_image, :fill, 60, 60, class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg"%></th>
+			<td><%= user.name %></td>
+			<td><%= "フォロー数：#{@user.active_relationships.count} " %></td>
+			<td><%= "フォロワー数：#{@user.passive_relationships.count} " %></td>
+			<td><%= link_to "Show",user_path(user) %></td>
+		</tr>
+		
+	</tbody>
+</table>
+    
+  <% end %>
+
+</div>
