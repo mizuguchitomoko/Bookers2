@@ -2,6 +2,7 @@
   <div class="row">
     <div class="col-xs-3">
 <%= render 'users/profile', user: current_user %>
+
     	<h1>New book</h1>
 <%= render 'layouts/error.message'  %>
 <% @book.errors.full_messages.each do |message| %>

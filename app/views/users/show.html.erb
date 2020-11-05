@@ -18,15 +18,17 @@
 	  </tr>
   </thead>
  </table>
-  <% @users.each do |user| %>
-    <% if current_user != user %>
-        <% if user.followed_by?(current_user) %>
-          <%= link_to 'フォロー外す', user_relationships_path(user.id), class: "btn btn-primary",  method: :delete %>
+  
+    <% if current_user.id != @user.id %>
+        <% if @user.followed_by?(current_user) %>
+          <%= link_to 'フォロー外す', user_relationships_path(@user.id), class: "btn btn-primary",  method: :delete %>
         <% else %>
-        <%= link_to 'フォローする', user_relationships_path(user.id), class: "btn btn-primary", method: :post %>
+        <%= link_to 'フォローする', user_relationships_path(@user.id), class: "btn btn-primary", method: :post %>
         <% end %>
+        <% else %>
+        <%= link_to "",edit_user_path(current_user.id), class:"col-xs-12 btn btn-default glyphicon glyphicon-wrench edit" %>
       <% end %>
-  <% end %>
+  
   
    <h1>New book</h1>
    <%= form_with model: @book_new,  local:true do |f| %>
