@@ -1,5 +1,9 @@
 <div class="container"> 
-<h2>Books search for</h2>
+<% if @range == '1' %>
+	<h3>Users search for "<%= @word %>"</h3>
+<% elsif @range == '2' %>
+	<h3>Books search for "<%= @word %>"</h3>
+<% end %>
 <!--books一覧 -->
 <table class="table table-hover table-inverse">
 　<% if @range == '2' %>
