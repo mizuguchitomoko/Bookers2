@@ -11,6 +11,7 @@ before_action :authenticate_user!, only: [:new, :create, :index, :show, :edit, :
     @book = Book.find(params[:id])
     @user = @book.user
     @book_comment = BookComment.new
+    @book_comments = BookComment.all
     @users = User.all
   end
 
